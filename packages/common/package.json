@@ -1,0 +1,15 @@
+{
+  "name": "@universal/common",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "peerDependencies": {
+    "@types/react": "*",
+    "@types/react-native": "*",
+    "react": "*",
+    "react-native": "*"
+  },
+  "devDependencies": {
+    "@types/react-native-vector-icons": "^6.4.6"
+  }
+}
