@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
-import {StyleSheet, View, Text, Platform, TouchableOpacity} from 'react-native';
+import {StyleSheet, View, Platform, TouchableOpacity} from 'react-native';
 import {HomeStackNavProps} from '../navigator/HomeStack';
-import {ActivityIndicator} from 'react-native-paper';
+import {Text, ActivityIndicator} from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
 import {workOutNextBusinessDay} from '../redux/actions/businessDay';
 import {AppState} from '../redux/reducers/rootReducer';

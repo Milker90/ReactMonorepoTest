@@ -14,7 +14,10 @@ const LocationCheckBox = (props: IProps) => {
   const {colors} = useTheme();
   return (
     <View style={styles.container}>
-      <Text>{title}</Text>
+      <Text
+        style={[styles.title, {color: checked ? colors.primary : '#141414'}]}>
+        {title}
+      </Text>
       <Checkbox
         color={colors.primary}
         status={checked ? 'checked' : 'unchecked'}
@@ -35,5 +38,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     flex: 1,
+  },
+  title: {
+    fontSize: 18,
   },
 });
