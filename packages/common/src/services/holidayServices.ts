@@ -2,7 +2,7 @@ import axios from 'axios';
 import {WorkOutNextBusinessDayResponse} from '../types';
 
 export async function requestWorkOutNextBusinessDay(
-  currentDate: Date,
+  currentDate: string,
   country: string,
   state?: string,
   region?: string,

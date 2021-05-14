@@ -2,7 +2,7 @@ import * as actions from '../types';
 import produce from 'immer';
 
 interface BusinessDayState {
-  currentDate?: Date;
+  currentDate?: string;
   nextBusinessDay?: string;
   nextBusinessDayLocal?: string;
   country?: string;
