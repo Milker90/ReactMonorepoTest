@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, View, Platform, TouchableOpacity} from 'react-native';
-import {HomeStackNavProps} from '../navigator/HomeStack';
+import {HomeStackNavProps} from '../navigator/types';
 import {Text, ActivityIndicator} from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
 import {workOutNextBusinessDay} from '../redux/actions/businessDay';

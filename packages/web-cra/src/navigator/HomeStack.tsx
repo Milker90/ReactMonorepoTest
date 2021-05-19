@@ -1,28 +1,19 @@
-import React from 'react';
+import React from 'react'
 import {
   CardStyleInterpolators,
   createStackNavigator,
   HeaderStyleInterpolators,
-  StackNavigationProp,
-} from '@react-navigation/stack';
-import {RouteProp} from '@react-navigation/native';
+} from '@react-navigation/stack'
 
-import {Platform, StatusBar, StyleSheet} from 'react-native';
-import Home from '../pages/home';
-import Result from '../pages/result';
-import NavBackImage from '../components/NavBackImage';
+import { Platform, StyleSheet } from 'react-native'
+import Home from '@universal/common/src/pages/home'
+import Result from '@universal/common/src/pages/result'
+import TestBusinessDay from '@universal/common/src/pages/testBusinessDay'
+import TestTextField from '../pages/testTextField'
+import NavBackImage from '@universal/common/src/components/NavBackImage'
+import { HomeStackParamList } from '@universal/common/src/navigator/types'
 
-type HomeStackParamList = {
-  Home: undefined;
-  Result: {currentDate: Date; country: string; state?: string; region?: string};
-};
-
-export type HomeStackNavProps<T extends keyof HomeStackParamList> = {
-  navigation: StackNavigationProp<HomeStackParamList, T>;
-  route: RouteProp<HomeStackParamList, T>;
-};
-
-const Stack = createStackNavigator<HomeStackParamList>();
+const Stack = createStackNavigator<HomeStackParamList>()
 
 function HomeStack() {
   return (
@@ -48,7 +39,8 @@ function HomeStack() {
         },
         headerBackTitleVisible: false,
         headerBackImage: () => <NavBackImage color="#444" name="arrow-left" />,
-      }}>
+      }}
+    >
       <Stack.Screen
         name="Home"
         component={Home}
@@ -60,10 +52,20 @@ function HomeStack() {
       <Stack.Screen
         name="Result"
         component={Result}
-        options={{headerTitle: 'Next Business Day'}}
+        options={{ headerTitle: 'Next Business Day' }}
+      />
+      <Stack.Screen
+        name="TestBusinessDay"
+        component={TestBusinessDay}
+        options={{ headerTitle: 'Next Business Day' }}
+      />
+      <Stack.Screen
+        name="TestTextField"
+        component={TestTextField}
+        options={{ headerTitle: 'Next Business Day' }}
       />
     </Stack.Navigator>
-  );
+  )
 }
 
-export default HomeStack;
+export default HomeStack

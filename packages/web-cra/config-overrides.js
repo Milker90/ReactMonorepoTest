@@ -7,7 +7,9 @@ const {
   babelInclude,
   addWebpackModuleRule,
   override,
+  adjustStyleLoaders,
 } = require('customize-cra')
+const { produce } = require('immer')
 
 const appDirectory = fs.realpathSync(process.cwd())
 const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath)
@@ -34,7 +36,42 @@ module.exports = function override(config, env) {
   return config
 }
 
+const updateWebpackModuleRules = (config) => {
+  const rules = config.module.rules
+  console.log(`rules--${rules.length}`)
+  // if (rules.length !== 3) {
+  //   throw new Error('Unexpected CRA config. Exiting.')
+  // }
+
+  const newConfig = produce(config, (cfg) => {
+    const sourceMapLoader = {
+      enforce: 'pre',
+      exclude: /@babel(?:\/|\\{1,2})runtime/,
+      test: /\.(js|mjs|jsx|ts|tsx|css)$/,
+      use: 'source-map-loader',
+    }
+    const rules = cfg.module.rules
+    rules.splice(1, 0, sourceMapLoader)
+  })
+
+  return newConfig
+}
+
 module.exports = override(
+  // updateWebpackModuleRules,
+  // adjustStyleLoaders(({ use: [, css, postcss, resolve, processor] }) => {
+  //   css.options.sourceMap = true // css-loader
+  //   postcss.options.sourceMap = true // postcss-loader
+  //   // when enable pre-processor,
+  //   // resolve-url-loader will be enabled too
+  //   if (resolve) {
+  //     resolve.options.sourceMap = true // resolve-url-loader
+  //   }
+  //   // pre-processor
+  //   if (processor && processor.loader.includes('sass-loader')) {
+  //     processor.options.sourceMap = true // sass-loader
+  //   }
+  // }),
   addWebpackModuleRule({
     test: /\.(jpg|png|woff|woff2|eot|ttf|svg)$/,
     loader: 'file-loader',
