@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Platform} from 'react-native';
+import {StyleSheet, Platform, Alert} from 'react-native';
 import {List} from 'react-native-paper';
 import {HomeStackNavProps} from '../navigator/types';
 
@@ -16,7 +16,11 @@ const Home = ({navigation}: HomeStackNavProps<'Home'>) => {
       <List.Item
         title="Test TextField"
         onPress={() => {
-          navigation.navigate('TestTextField');
+          if (Platform.OS === 'web') {
+            navigation.navigate('TestTextField');
+          } else {
+            Alert.alert('Not Support Page');
+          }
         }}
       />
     </List.Section>
