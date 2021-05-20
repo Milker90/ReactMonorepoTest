@@ -23,32 +23,26 @@ const TestTextField = ({
       <View style={styles.inputBox}>
         <UnFillTextField
           fullWidth
-          name="name"
           type="text"
           label="Full Name"
           variant="outlined"
-          autoComplete="off"
+          spellCheck="false"
           onChange={(e) => setFullName(e.target.value)}
         />
         <Box m={2}></Box>
         <UnFillTextField
           fullWidth
-          name="email"
           type="email"
           label="Email Address"
           variant="outlined"
-          autoComplete="off"
           onChange={(e) => setEmail(e.target.value)}
         />
         <Box m={2}></Box>
         <UnFillTextField
           fullWidth
-          name="password"
           type="password"
           label="Password"
           variant="outlined"
-          autoComplete="new-password"
-          value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <Box m={5}></Box>
